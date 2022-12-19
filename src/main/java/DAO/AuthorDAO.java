@@ -53,7 +53,7 @@ public class AuthorDAO {
     {
         try (Session session = HibernateUtil.configureSession()) {
             Query query = session.createQuery("from Author where name like :name");
-            query.setParameter("name",name);
+            query.setParameter("name","%"+name+"%");
             List authors = query.list();
             for (Iterator it = authors.iterator(); it.hasNext(); ) {
                 Author mcRead = (Author) it.next();

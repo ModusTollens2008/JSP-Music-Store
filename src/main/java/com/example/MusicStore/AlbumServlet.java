@@ -142,7 +142,7 @@ public class AlbumServlet extends HttpServlet {
     public String authorsByNameString(String name)
     {
         List<Author> singres = au.getAuthorsLike(name);
-        List<String> singerNames = au.getAuthors().stream().map(singer -> singer.getName()).collect(Collectors.toList());
+        List<String> singerNames = singres.stream().map(singer -> singer.getName()).collect(Collectors.toList());
         ObjectMapper obj = new ObjectMapper();
         String names = "";
         try {

@@ -69,6 +69,20 @@ public class AlbumDAO {
             return albums;
         }
     }
+
+    public List<Album> getAlbumsLike(String name)
+    {
+        try (Session session = HibernateUtil.configureSession()) {
+            Query query = session.createQuery("from Album where album_name like :name");
+            query.setParameter("name","%"+name+"%");
+            List authors = query.list();
+            for (Iterator it = authors.iterator(); it.hasNext(); ) {
+                Album mcRead = (Album) it.next();
+            }
+            return authors;
+        }
+    }
+
     public Album getAlbumByName(String name)
     {
         try(Session session = HibernateUtil.configureSession())

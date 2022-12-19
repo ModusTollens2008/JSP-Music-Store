@@ -14,6 +14,8 @@
     <p><a class="btn btn-primary btn-block" href = "author-servlet">Authors</a></p>
     <p><a class="btn btn-primary btn-block" href = "album-servlet">Albums</a></p>
     <p><a class="btn btn-primary btn-block" href = "composition-servlet">Compositions</a></p>
+    <p><a class="btn btn-primary btn-block" href = "albumlist-servlet">Albums by author</a></p>
+    <p><a class="btn btn-primary btn-block" href = "compositionlist-servlet">Compositions by album</a></p>
 </div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package DAO;
 
 
+import Model.Album;
 import Model.Author;
 import Model.Composition;
 import com.example.MusicStore.HibernateUtil;
@@ -72,4 +73,18 @@ public class CompositionDAO {
         }
 
     }
+
+    public List<Composition> getCompositionsByAlbum(String authorName) {
+        try (Session session = HibernateUtil.configureSession()) {
+            Query query = session.createQuery("from Composition where album_id in (SELECT id from Album where album_name=:name) ");
+            query.setParameter("name",authorName);
+            List albums = query.list();
+            for (Iterator it = albums.iterator(); it.hasNext(); ) {
+                Composition mcRead = (Composition) it.next();
+            }
+            return albums;
+        }
+    }
+
+
 }
