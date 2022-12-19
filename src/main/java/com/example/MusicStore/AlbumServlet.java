@@ -138,6 +138,7 @@ public class AlbumServlet extends HttpServlet {
 
 
     }
+
     public String authorsByNameString(String name)
     {
         List<Author> singres = au.getAuthorsLike(name);

@@ -56,7 +56,19 @@ public class AlbumDAO {
         }
     }
 
-
+    public List<Album> getAlbumsByAuthor(String authorName)
+    {
+        try (Session session = HibernateUtil.configureSession()) {
+            Query query = session.createQuery("from Album where author_id in (SELECT id from Author where author_name=:name) ");
+            query.setParameter("name",authorName);
+            List albums = query.list();
+            for (Iterator it = albums.iterator(); it.hasNext(); ) {
+                Album mcRead = (Album) it.next();
+                System.out.println(mcRead.getAlbumName() + " " + mcRead.getId());
+            }
+            return albums;
+        }
+    }
     public Album getAlbumByName(String name)
     {
         try(Session session = HibernateUtil.configureSession())
